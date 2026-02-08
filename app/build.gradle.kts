@@ -49,3 +49,24 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+// Lire le manifest.json pour extraire le nom et la version
+fun readManifestProperty(property: String): String {
+    val manifestFile = file("src/main/resources/manifest.json")
+    if (!manifestFile.exists()) return ""
+    
+    val content = manifestFile.readText()
+    val regex = "\"$property\"\\s*:\\s*\"([^\"]+)\"".toRegex()
+    val match = regex.find(content)
+    return match?.groupValues?.get(1) ?: ""
+}
+
+// Configurer le nom du JAR en fonction du manifest.json
+val pluginName = readManifestProperty("Name")
+val pluginVersion = readManifestProperty("Version")
+
+if (pluginName.isNotEmpty()) {
+    tasks.named<Jar>("jar") {
+        archiveFileName.set("$pluginName.jar")
+    }
+}
