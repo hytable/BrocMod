@@ -16,7 +16,14 @@ repositories {
 }
 
 dependencies {
+    // Hytale Server JAR
     compileOnly(files("libs/HytaleServer.jar"))
+    testImplementation(files("libs/HytaleServer.jar"))
+    
+    // JSR 305 annotations (provides @Nonnull)
+    implementation("com.google.code.findbugs:jsr305:3.0.2")
+    testImplementation("com.google.code.findbugs:jsr305:3.0.2")
+    
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
 

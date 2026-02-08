@@ -1,0 +1,6 @@
+{
+	"Group": "com.hytable",
+	"Name": "TestPlug",
+	"Version": "0.0.1",
+	"Main": "com.hytable.plugin.TestPlug"
+}
