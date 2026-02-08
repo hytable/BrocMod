@@ -6,8 +6,8 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    application
+    // Java library plugin for Hytale plugin
+    java
 }
 
 repositories {
@@ -26,6 +26,8 @@ dependencies {
     
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
+    testImplementation("org.mockito:mockito-core:5.8.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.8.0")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
@@ -40,10 +42,7 @@ java {
     }
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = "hytale.App"
-}
+
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
