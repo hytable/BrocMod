@@ -4,28 +4,27 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class TestPlugBuildTest {
+class BrocPlugBuildTest {
 
     @Test
     @DisplayName("Plugin source files should exist")
     void testSourceFilesExist() {
-        Path testPlugPath = Paths.get("src/main/java/com/hytable/plugin/TestPlug.java");
+        Path BrocPlugPath = Paths.get("src/main/java/com/hytable/plugin/BrocPlug.java");
         Path helloCommandPath = Paths.get("src/main/java/com/hytable/plugin/HelloCommand.java");
         Path manifestPath = Paths.get("src/main/resources/manifest.json");
 
-        assertTrue(Files.exists(testPlugPath), "TestPlug.java doit exister");
+        assertTrue(Files.exists(BrocPlugPath), "BrocPlug.java doit exister");
         assertTrue(Files.exists(helloCommandPath), "HelloCommand.java doit exister");
         assertTrue(Files.exists(manifestPath), "manifest.json doit exister");
     }
 
     @Test
     @DisplayName("Plugin should compile successfully")
-    void testPluginCompiles() {
+    void BrocPluginCompiles() {
         // Si ce test s'exécute, c'est que la compilation a réussi
         assertTrue(true, "La compilation a réussi");
     }

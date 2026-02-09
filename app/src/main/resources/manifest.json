@@ -1,6 +1,6 @@
 {
 	"Group": "com.hytable",
-	"Name": "TestPlug",
+	"Name": "BrocPlug",
 	"Version": "0.0.1",
-	"Main": "com.hytable.plugin.TestPlug"
+	"Main": "com.hytable.plugin.BrocPlug"
 }
