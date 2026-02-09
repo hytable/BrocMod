@@ -62,9 +62,10 @@ Vous voulez modifier ou améliorer le plugin ? Voici les fichiers importants :
 
 ```
 app/src/main/java/com/hytable/plugin/
-├── BrocPlug.java          # Fichier principal qui charge les commandes
-├── HelloCommand.java      # Code de la commande /hello
-└── StatusCommand.java     # Code de la commande /status
+├── BrocPlug.java              # Fichier principal qui charge les commandes
+└── commands/                  # Dossier contenant toutes les commandes
+    ├── HelloCommand.java      # Code de la commande /hello
+    └── StatusCommand.java     # Code de la commande /status
 ```
 
 ### Compiler le projet
