@@ -1,4 +1,4 @@
-package com.hytable.plugin;
+package com.hytable.plugin.commands;
 
 import javax.annotation.Nonnull;
 
