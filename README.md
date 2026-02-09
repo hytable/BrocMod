@@ -3,210 +3,95 @@
 ![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)
 ![Hytale](https://img.shields.io/badge/Hytale-Plugin-green.svg)
 
-Plugin Hytale de développement pour tester et apprendre les fonctionnalités de base de l'API serveur Hytale.
+Un plugin simple pour serveur Hytale qui ajoute des commandes utiles pour les joueurs.
 
-## 📋 Fonctionnalités
+## ✨ Qu'est-ce que c'est ?
 
-### Commandes disponibles
+BrocPlug est un plugin pour serveurs Hytale permettant d'ajouter de nouvelles commandes dans le jeu. Facile à installer et à utiliser !
 
-| Commande | Description | Utilisation |
-|----------|-------------|-------------|
-| `/hello` | Affiche un message de bienvenue | Affiche un titre événementiel à l'écran |
-| `/status` | Affiche les statistiques du joueur | Montre la vie, stamina, nom du joueur et du monde |
+## 📋 Commandes disponibles
 
-### Détails des commandes
+| Commande | Description |
+|----------|-------------|
+| `/hello` | Affiche un message de bienvenue à l'écran |
+| `/status` | Affiche vos statistiques de joueur (vie, stamina, monde) |
 
-#### `/hello`
-- **Type** : AbstractPlayerCommand
-- **Permissions** : Aucune requise
-- **Fonctionnalité** : Affiche un titre événementiel "Hello world!" avec sous-titre
-- **Thread-safety** : Utilise EventTitleUtil pour l'affichage
+### 💬 `/hello`
+Affiche un message de bienvenue stylé directement sur votre écran. Parfait pour tester le plugin !
 
-#### `/status`
-- **Type** : AbstractPlayerCommand
-- **Permissions** : Aucune requise
-- **Fonctionnalité** : Récupère et affiche les statistiques du joueur
-  - Nom du joueur
-  - Nom du monde
-  - Points de vie (HP)
-  - Stamina (en pourcentage)
-- **Thread-safety** : Exécute les opérations sur le thread du monde
+### 📊 `/status`
+Montre vos informations actuelles :
+- 👤 Votre pseudo
+- 🌍 Le monde dans lequel vous êtes
+- ❤️ Vos points de vie
+- ⚡ Votre niveau de stamina
 
 ## 🚀 Installation
 
-### Prérequis
-- Java 17 ou supérieur
-- Serveur Hytale avec support des plugins
-- Gradle (inclus via wrapper)
+### Ce dont vous avez besoin
+- Un serveur Hytale qui supporte les plugins
+- Java 17 ou plus récent
 
-### Compilation
+### Installer le plugin
 
+**Option 1 : Installation rapide**
+1. Téléchargez le fichier `app.jar`
+2. Placez-le dans le dossier `mods/` de votre serveur
+3. Redémarrez le serveur
+
+**Option 2 : Compiler vous-même**
 ```bash
-# Compiler le plugin
-./gradlew build
-
-# Ou utiliser le script de compilation et copie automatique
 ./compile-copy.sh
 ```
+Le plugin sera automatiquement compilé et copié au bon endroit.
 
-Le JAR compilé se trouve dans : `app/build/distributions/app.jar`
+## 📖 Comment utiliser
 
-### Installation sur le serveur
+Une fois le serveur démarré avec le plugin installé, tapez simplement les commandes en jeu :
 
-1. Compiler le plugin avec la commande ci-dessus
-2. Copier `app/build/distributions/app.jar` dans le dossier `mods/` du serveur
-3. Redémarrer le serveur Hytale
-
-## 📖 Utilisation
-
-Une fois le plugin installé et le serveur démarré :
-
-```bash
-# Tester la commande hello
+```
 /hello
-
-# Afficher vos statistiques
 /status
 ```
 
-## 🛠️ Développement
+C'est tout ! Aucune permission spéciale requise.
 
-### Structure du projet
+## 🛠️ Pour les développeurs
+
+Vous voulez modifier ou améliorer le plugin ? Voici les fichiers importants :
 
 ```
-app/
-├── src/
-│   ├── main/
-│   │   ├── java/com/hytable/plugin/
-│   │   │   ├── BrocPlug.java          # Classe principale du plugin
-│   │   │   ├── HelloCommand.java      # Commande /hello
-│   │   │   └── StatusCommand.java     # Commande /status
-│   │   └── resources/
-│   │       └── manifest.json          # Métadonnées du plugin
-│   └── test/
-│       └── java/com/hytable/plugin/
-│           └── TestPlugBuildTest.java # Tests unitaires
-└── build.gradle.kts                   # Configuration Gradle
+app/src/main/java/com/hytable/plugin/
+├── BrocPlug.java          # Fichier principal qui charge les commandes
+├── HelloCommand.java      # Code de la commande /hello
+└── StatusCommand.java     # Code de la commande /status
 ```
 
-### Classes principales
-
-#### `BrocPlug.java`
-- **Package** : `com.hytable.plugin`
-- **Extends** : `JavaPlugin`
-- **Rôle** : Point d'entrée du plugin, enregistre les commandes
-
-```java
-@Override
-protected void setup() {
-    this.getCommandRegistry().registerCommand(
-        new HelloCommand("hello", "An exemple command", false));
-    this.getCommandRegistry().registerCommand(
-        new StatusCommand("status", "Affiche le statut du joueur", false));
-}
-```
-
-#### `HelloCommand.java`
-- **Extends** : `AbstractPlayerCommand`
-- **Fonctionnalité** : Affiche un message de bienvenue avec EventTitleUtil
-
-#### `StatusCommand.java`
-- **Extends** : `AbstractPlayerCommand`
-- **Fonctionnalité** : Récupère et affiche les statistiques du joueur
-- **Utilise** : EntityStatMap, World.execute() pour thread-safety
-
-### API Hytale utilisées
-
-- `com.hypixel.hytale.server.core.plugin.JavaPlugin` - Base du plugin
-- `com.hypixel.hytale.server.core.command.system` - Système de commandes
-- `com.hypixel.hytale.server.core.modules.entitystats` - Statistiques des entités
-- `com.hypixel.hytale.component` - Système de composants (Ref, Store)
-- `com.hypixel.hytale.server.core.util.EventTitleUtil` - Affichage de titres
-
-### Compiler et tester
+### Compiler le projet
 
 ```bash
 # Compiler
 ./gradlew build
 
-# Exécuter les tests
-./gradlew test
-
 # Nettoyer et recompiler
 ./gradlew clean build
 
-# Voir les rapports de tests
-open app/build/reports/tests/test/index.html
+# Lancer les tests
+./gradlew test
 ```
-
-## 📝 Exemples de code
-
-### Envoyer un message au joueur (thread-safe)
-
-```java
-@Override
-protected void execute(@Nonnull CommandContext ctx, ...) {
-    // Simple message
-    ctx.sendMessage(Message.raw("Votre message"));
-    
-    // Message avec couleurs
-    ctx.sendMessage(Message.raw("§aSuccès !"));
-    
-    // Depuis le thread du monde
-    world.execute(() -> {
-        ctx.sendMessage(Message.raw("Message depuis world thread"));
-    });
-}
-```
-
-### Récupérer les stats d'un joueur
-
-```java
-EntityStatMap statMap = (EntityStatMap) store.getComponent(
-    playerRef, 
-    EntityStatMap.getComponentType()
-);
-
-if (statMap != null) {
-    EntityStatValue hp = statMap.get(DefaultEntityStatTypes.getHealth());
-    Float currentHP = hp.get();
-    Float maxHP = hp.getMax();
-}
-```
-
-## 🔧 Configuration
-
-### manifest.json
-
-```json
-{
-    "Group": "com.hytable",
-    "Name": "BrocPlug",
-    "Version": "0.0.1",
-    "Main": "com.hytable.plugin.BrocPlug"
-}
-```
-
-## 📦 Dépendances
-
-Les dépendances sont gérées via Gradle et définies dans `gradle/libs.versions.toml`.
 
 ## 🤝 Contribution
 
-Ce projet est un plugin de développement pour l'apprentissage. N'hésitez pas à :
-- Ajouter de nouvelles commandes
-- Améliorer les fonctionnalités existantes
-- Corriger les bugs
-- Améliorer la documentation
-
-## 📄 Licence
-
-Projet éducatif - À usage de développement uniquement.
+N'hésitez pas à :
+- ✨ Proposer de nouvelles commandes
+- 🐛 Signaler des bugs
+- 📝 Améliorer la documentation
+- 🚀 Ajouter des fonctionnalités
 
 ## 👤 Auteur
 
-Développé par Alex pour apprendre le développement de plugins Hytale.
+Développé par Alex
 
 ---
 
-**Note** : Ce plugin est en cours de développement et destiné à l'apprentissage de l'API Hytale.
+**Note** : Plugin en développement actif 🚧
