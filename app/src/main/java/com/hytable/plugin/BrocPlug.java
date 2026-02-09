@@ -2,10 +2,12 @@ package com.hytable.plugin;
 
 import javax.annotation.Nonnull;
 
+import com.hypixel.hytale.server.core.event.events.player.PlayerConnectEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hytable.plugin.commands.HelloCommand;
 import com.hytable.plugin.commands.StatusCommand;
+import com.hytable.plugin.handlers.WelcomeHandler;
 
 public class BrocPlug extends JavaPlugin {
 
@@ -16,9 +18,15 @@ public class BrocPlug extends JavaPlugin {
 	@Override
 	protected void setup() {
 		super.setup();
+
 		this.getCommandRegistry().registerCommand(
 			new HelloCommand("hello","An exemple command", false));
+
 		this.getCommandRegistry().registerCommand(
 			new StatusCommand("status", "Affiche le statut du joueur", false));
+
+		this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
+			WelcomeHandler.onPlayerJoin(event);
+		});
 	}
 }
