@@ -3,11 +3,16 @@
 ![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)
 ![Hytale](https://img.shields.io/badge/Hytale-Plugin-green.svg)
 
-Un plugin simple pour serveur Hytale qui ajoute des commandes utiles pour les joueurs.
+Un plugin simple pour serveur Hytale qui ajoute des commandes utiles et des fonctionnalités automatiques pour les joueurs.
 
 ## ✨ Qu'est-ce que c'est ?
 
-BrocPlug est un plugin pour serveurs Hytale permettant d'ajouter de nouvelles commandes dans le jeu. Facile à installer et à utiliser !
+BrocPlug est un plugin pour serveurs Hytale permettant d'ajouter de nouvelles commandes dans le jeu et d'améliorer l'expérience des joueurs. Facile à installer et à utiliser !
+
+## 🎉 Fonctionnalités automatiques
+
+### Message de bienvenue
+Lorsqu'un joueur rejoint le serveur, un **titre personnalisé** s'affiche à l'écran avec son pseudo !
 
 ## 📋 Commandes disponibles
 
@@ -62,10 +67,12 @@ Vous voulez modifier ou améliorer le plugin ? Voici les fichiers importants :
 
 ```
 app/src/main/java/com/hytable/plugin/
-├── BrocPlug.java              # Fichier principal qui charge les commandes
-└── commands/                  # Dossier contenant toutes les commandes
-    ├── HelloCommand.java      # Code de la commande /hello
-    └── StatusCommand.java     # Code de la commande /status
+├── BrocPlug.java              # Fichier principal qui charge les commandes et événements
+├── commands/                  # Dossier contenant toutes les commandes
+│   ├── HelloCommand.java      # Code de la commande /hello
+│   └── StatusCommand.java     # Code de la commande /status
+└── handlers/                  # Gestionnaires d'événements automatiques
+    └── WelcomeHandler.java    # Gère le message de bienvenue à la connexion
 ```
 
 ### Compiler le projet

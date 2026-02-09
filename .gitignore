@@ -6,3 +6,4 @@ build
 app/libs
 app/bin
 deploy.sh
+hytale-source
