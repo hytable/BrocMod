@@ -27,6 +27,7 @@ Lorsqu'un joueur rejoint le serveur, un **titre personnalisé** s'affiche à l'�
 | `/hello` | Affiche un message de bienvenue à l'écran |
 | `/status` | Affiche vos statistiques de joueur (vie, stamina, monde) |
 | `/clock` | Affiche l'heure actuelle du monde |
+| `/clock set HH:MM` | Change l'heure à une valeur précise (ex: 14:30) |
 | `/clock midday` | Change l'heure à midi (12h00) |
 | `/clock midnight` | Change l'heure à minuit (00h00) |
 
@@ -55,6 +56,7 @@ Montre vos informations actuelles :
 ### ⏰ `/clock`
 Gestion du temps dans le monde :
 - **`/clock`** → Affiche l'heure actuelle (format : 14h05)
+- **`/clock set HH:MM`** → Change l'heure à une valeur précise (ex: `/clock set 14:30`)
 - **`/clock midday`** → Change instantanément l'heure à midi
 - **`/clock midnight`** → Change instantanément l'heure à minuit
 
@@ -91,6 +93,7 @@ Une fois le serveur démarré avec le plugin installé, tapez simplement les com
 /hello
 /status
 /clock
+/clock set 14:30
 /clock midday
 /clock midnight
 ```
@@ -107,7 +110,7 @@ app/src/main/java/com/hytable/plugin/
 ├── commands/                  # Dossier contenant toutes les commandes
 │   ├── HelloCommand.java      # Code de la commande /hello
 │   ├── StatusCommand.java     # Code de la commande /status
-│   └── ClockCommand.java      # Code de la commande /clock avec sous-commandes
+│   └── ClockCommand.java      # Code de la commande /clock avec sous-commandes (set, midday, midnight)
 └── handlers/                  # Gestionnaires d'événements automatiques
     └── WelcomeHandler.java    # Gère le message de bienvenue à la connexion
 ```
