@@ -31,8 +31,8 @@ public class HelloCommand extends AbstractPlayerCommand {
 
 		EventTitleUtil.showEventTitleToPlayer(
 			arg3,
-			Message.raw("Bienvenue !!!"), 
-			Message.raw("HELLO"), 
+			Message.raw("Bienvenue à toi aventurier !"), 
+			Message.raw("Welcome"), 
 			true
 		);		
 	}
