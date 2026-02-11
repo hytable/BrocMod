@@ -31,7 +31,27 @@ echo ""
 
 echo "→ Redémarrage du conteneur Docker..."
 docker restart hytale
+
+echo "  ⏳ Attente du démarrage du serveur..."
+
+# Attendre que le message de boot apparaisse dans les logs
+TIMEOUT=60  # Timeout de 60 secondes
+ELAPSED=0
+while ! docker logs hytale 2>&1 | tail -20 | grep -q "Hytale Server Booted"; do
+    if [ $ELAPSED -ge $TIMEOUT ]; then
+        echo "  ⚠️  Timeout: Le serveur prend trop de temps à démarrer"
+        break
+    fi
+    echo "  ⏳ Toujours en attente... (${ELAPSED}s)"
+    sleep 3
+    ELAPSED=$((ELAPSED + 3))
+done
+
+if docker logs hytale 2>&1 | tail -20 | grep -q "Hytale Server Booted"; then
+    echo "  ✓ Serveur Hytale démarré avec succès !"
+fi
+
 echo ""
 echo "=============================================="
-echo "  ✓ TERMINÉ"
+echo "  ✓ TERMINÉ - Vous pouvez vous connecter !"
 echo "=============================================="

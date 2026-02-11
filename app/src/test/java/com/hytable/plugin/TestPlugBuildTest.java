@@ -14,7 +14,7 @@ class BrocPlugBuildTest {
     @DisplayName("Plugin source files should exist")
     void testSourceFilesExist() {
         Path BrocPlugPath = Paths.get("src/main/java/com/hytable/plugin/BrocPlug.java");
-        Path helloCommandPath = Paths.get("src/main/java/com/hytable/plugin/HelloCommand.java");
+        Path helloCommandPath = Paths.get("src/main/java/com/hytable/plugin/commands/HelloCommand.java");
         Path manifestPath = Paths.get("src/main/resources/manifest.json");
 
         assertTrue(Files.exists(BrocPlugPath), "BrocPlug.java doit exister");

@@ -50,7 +50,7 @@ if (componentType != null) {
         EntityStatValue ESVPlayerHP = statMap.get(DefaultEntityStatTypes.getHealth());
         EntityStatValue ESVPlayerStamina = statMap.get(DefaultEntityStatTypes.getStamina());
         
-        if (ESVPlayerHP != null && ESVPlayerStamina != null) {
+        if (ESVPlayerHP != null && ESVPlayerStamina != null) { //ESV = Entity Stat Value
             Float playerHP = ESVPlayerHP.get();
             Float playerStamina = ESVPlayerStamina.asPercentage() * 100;
 

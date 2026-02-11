@@ -27,12 +27,12 @@ public class HelloCommand extends AbstractPlayerCommand {
 			@Nonnull PlayerRef arg3, 
 			@Nonnull World arg4) 
 	{
-		// TODO Auto-generated method stub
+		//type /hello to execute
 
 		EventTitleUtil.showEventTitleToPlayer(
 			arg3,
-			Message.raw("Hello world!"), 
-			Message.raw("Ta race Neras"), 
+			Message.raw("Bienvenue !!!"), 
+			Message.raw("HELLO"), 
 			true
 		);		
 	}
