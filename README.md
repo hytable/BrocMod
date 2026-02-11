@@ -75,12 +75,6 @@ Gestion de la météo :
 - **`/sky rain`** → Fait tomber la pluie
 - **`/sky storm`** → Déclenche l'orage
 
-**Aperçu :**
-
-![Commande sky](docs/screenshots/sky-command.png)
-
-*Change instantanément la météo du monde*
-
 ## 🚀 Installation
 
 ### Ce dont vous avez besoin
