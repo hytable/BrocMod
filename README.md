@@ -30,6 +30,9 @@ Lorsqu'un joueur rejoint le serveur, un **titre personnalisé** s'affiche à l'�
 | `/clock set HH:MM` | Change l'heure à une valeur précise (ex: 14:30) |
 | `/clock midday` | Change l'heure à midi (12h00) |
 | `/clock midnight` | Change l'heure à minuit (00h00) |
+| `/sky clear` | Dégage le ciel pour un grand soleil |
+| `/sky rain` | Déclenche la pluie |
+| `/sky storm` | Déclenche un violent orage |
 
 ### 💬 `/hello`
 Affiche un message de bienvenue stylé directement sur votre écran. Parfait pour tester le plugin !
@@ -66,6 +69,18 @@ Gestion du temps dans le monde :
 
 *Affiche l'heure actuelle du monde au format HHhMM*
 
+### 🌦️ `/sky`
+Gestion de la météo :
+- **`/sky clear`** → Met un grand soleil
+- **`/sky rain`** → Fait tomber la pluie
+- **`/sky storm`** → Déclenche l'orage
+
+**Aperçu :**
+
+![Commande sky](docs/screenshots/sky-command.png)
+
+*Change instantanément la météo du monde*
+
 ## 🚀 Installation
 
 ### Ce dont vous avez besoin
@@ -96,6 +111,9 @@ Une fois le serveur démarré avec le plugin installé, tapez simplement les com
 /clock set 14:30
 /clock midday
 /clock midnight
+/sky clear
+/sky rain
+/sky storm
 ```
 
 C'est tout ! Aucune permission spéciale requise.
@@ -110,7 +128,8 @@ app/src/main/java/com/hytable/plugin/
 ├── commands/                  # Dossier contenant toutes les commandes
 │   ├── HelloCommand.java      # Code de la commande /hello
 │   ├── StatusCommand.java     # Code de la commande /status
-│   └── ClockCommand.java      # Code de la commande /clock avec sous-commandes (set, midday, midnight)
+│   ├── ClockCommand.java      # Code de la commande /clock avec sous-commandes (set, midday, midnight)
+│   └── SkyCommand.java        # Code de la commande /sky avec sous-commandes (clear, rain, storm)
 └── handlers/                  # Gestionnaires d'événements automatiques
     └── WelcomeHandler.java    # Gère le message de bienvenue à la connexion
 ```

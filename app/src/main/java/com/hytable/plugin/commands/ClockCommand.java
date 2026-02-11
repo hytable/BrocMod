@@ -24,7 +24,7 @@ public class ClockCommand extends AbstractWorldCommand {
 		// Ajoute la sous-commande midnight
 		this.addSubCommand(new MidnightCommand());
 		// Ajoute la sous-commande set
-		this.addSubCommand(new SetCommand());
+		this.addSubCommand(new SetClockCommand());
 	}
 
 	@Override
@@ -97,11 +97,11 @@ public class ClockCommand extends AbstractWorldCommand {
 		}
 	}
 
-	private static class SetCommand extends AbstractWorldCommand {
+	private static class SetClockCommand extends AbstractWorldCommand {
 
 		private final RequiredArg<String> timeArg = this.withRequiredArg("time", "The time in format HH:MM", ArgTypes.STRING);
 
-		public SetCommand() {
+		public SetClockCommand() {
 			super("set", "Set the time");
 		}
 
@@ -130,7 +130,7 @@ public class ClockCommand extends AbstractWorldCommand {
 				return;
 			}
 
-			else if (minutes < 0 || minutes > 59){
+			if (minutes < 0 || minutes > 59){
 				ctx.sendMessage(Message.raw("ERROR --> Between 0 and 59"));
 				return;
 			}

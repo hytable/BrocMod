@@ -16,7 +16,7 @@ public class HelloCommand extends AbstractPlayerCommand {
 
 	public HelloCommand(@Nonnull String name,@Nonnull String description, boolean requiresConfirmation) {
 		super(name, description, requiresConfirmation);
-		//TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
