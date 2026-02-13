@@ -1,102 +1,122 @@
-# BrocPlug
+# BrocMod
 
 ![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)
 ![Hytale](https://img.shields.io/badge/Hytale-Plugin-green.svg)
 
-Un plugin simple pour serveur Hytale qui ajoute des commandes utiles et des fonctionnalités automatiques pour les joueurs.
+A simple plugin for Hytale servers that adds useful commands and automatic features for players.
 
-## ✨ Qu'est-ce que c'est ?
+## ✨ What is it?
 
-BrocPlug est un plugin pour serveurs Hytale permettant d'ajouter de nouvelles commandes dans le jeu et d'améliorer l'expérience des joueurs. Facile à installer et à utiliser !
+BrocMod is a plugin for Hytale servers that allows you to add new commands in-game and improve the player experience. Easy to install and use!
 
-## 🎉 Fonctionnalités automatiques
+## 🎉 Automatic Features
 
-### Message de bienvenue
-Lorsqu'un joueur rejoint le serveur, un **titre personnalisé** s'affiche à l'écran avec son pseudo !
+### Welcome Message
+When a player joins the server, a **custom title** appears on the screen with their username!
 
-**Aperçu :**
+**Preview :**
 
-![Message de bienvenue](docs/screenshots/welcome-handler.png)
+![Welcome message](docs/screenshots/welcome-handler.png)
 
-*Un grand titre "Bienvenue !!!" s'affiche à l'écran avec le nom du joueur*
+*A large title "Welcome!!!" appears on screen with the player's name*
 
-## 📋 Commandes disponibles
+## 📋 Available Commands
 
-| Commande | Description |
-|----------|-------------|
-| `/hello` | Affiche un message de bienvenue à l'écran |
-| `/status` | Affiche vos statistiques de joueur (vie, stamina, monde) |
-| `/clock` | Affiche l'heure actuelle du monde |
-| `/clock set HH:MM` | Change l'heure à une valeur précise (ex: 14:30) |
-| `/clock midday` | Change l'heure à midi (12h00) |
-| `/clock midnight` | Change l'heure à minuit (00h00) |
-| `/sky clear` | Dégage le ciel pour un grand soleil |
-| `/sky rain` | Déclenche la pluie |
-| `/sky storm` | Déclenche un violent orage |
+| Command | Description |
+|---------|-------------|
+| `/hello` | Display a welcome message on screen |
+| `/status` | Display your player statistics (health, stamina, world) |
+| `/clock` | Display the current time in the world |
+| `/clock set HH:MM` | Change the time to a precise value (ex: 14:30) |
+| `/clock midday` | Change the time to noon (12:00) |
+| `/clock midnight` | Change the time to midnight (00:00) |
+| `/sky clear` | Clear the sky for bright sunshine |
+| `/sky rain` | Trigger rain |
+| `/sky storm` | Trigger a violent storm |
+| `/sky set <id>` | Apply a specific weather by ID |
+| `/sky current` | Display the current weather ID |
+| `/sky id` | List weather categories |
+| `/sky id <category>` | List weather IDs in a category |
 
 ### 💬 `/hello`
-Affiche un message de bienvenue stylé directement sur votre écran. Parfait pour tester le plugin !
+Displays a stylish welcome message directly on your screen. Perfect for testing the plugin!
 
-**Aperçu :**
+**Preview :**
 
-![Commande hello](docs/screenshots/hello-command.png)
+![Hello command](docs/screenshots/hello-command.png)
 
-*Un grand titre "Bienvenue !!!" s'affiche en or à l'écran*
+*A large "Welcome adventurer!" title appears in gold on screen*
 
 ### 📊 `/status`
-Montre vos informations actuelles :
-- 👤 Votre pseudo
-- 🌍 Le monde dans lequel vous êtes
-- ❤️ Vos points de vie
-- ⚡ Votre niveau de stamina
+Shows your current information :
+- 👤 Your username
+- 🌍 The world you are in
+- ❤️ Your health points
+- ⚡ Your stamina level
 
-**Aperçu :**
+**Preview :**
 
-![Commande status](docs/screenshots/status-command.png)
+![Status command](docs/screenshots/status-command.png)
 
-*Affichage complet de vos statistiques en jeu*
+*Complete display of your statistics in-game*
 
 ### ⏰ `/clock`
-Gestion du temps dans le monde :
-- **`/clock`** → Affiche l'heure actuelle (format : 14h05)
-- **`/clock set HH:MM`** → Change l'heure à une valeur précise (ex: `/clock set 14:30`)
-- **`/clock midday`** → Change instantanément l'heure à midi
-- **`/clock midnight`** → Change instantanément l'heure à minuit
+Time management in the world :
+- **`/clock`** → Display current time (format : 14h05)
+- **`/clock set HH:MM`** → Change time to a precise value (ex: `/clock set 14:30`)
+- **`/clock midday`** → Instantly change time to noon
+- **`/clock midnight`** → Instantly change time to midnight
 
-**Aperçu :**
+**Preview :**
 
-![Commande clock](docs/screenshots/clock-command.png)
+![Clock command](docs/screenshots/clock-command.png)
 
-*Affiche l'heure actuelle du monde au format HHhMM*
+*Display the world's current time in HHhMM format*
 
 ### 🌦️ `/sky`
-Gestion de la météo :
-- **`/sky clear`** → Met un grand soleil
-- **`/sky rain`** → Fait tomber la pluie
-- **`/sky storm`** → Déclenche l'orage
+Weather management :
+- **`/sky clear`** → Bright sunshine
+- **`/sky rain`** → Rainy weather
+- **`/sky storm`** → Violent thunderstorm
+- **`/sky set <weather_id>`** → Apply any weather by its ID
+- **`/sky current`** → Display the current weather ID
+- **`/sky id`** → List all available weather categories
+- **`/sky id <category>`** → List all weather IDs in a category (clear, rain, storm, mist, cloudy, special)
+
+**Preview - Sky ID Categories :**
+
+![Sky ID Categories](docs/screenshots/sky-id-commands.png)
+
+*List of all available weather categories with their descriptions*
+
+**Preview - Sky ID Sunny Weather :**
+
+![Sky ID Clear](docs/screenshots/sky-id-categorie-commands.png)
+
+*Example: List of all sunny weather IDs in the "clear" category*
 
 ## 🚀 Installation
 
-### Ce dont vous avez besoin
-- Un serveur Hytale qui supporte les plugins
-- Java 17 ou plus récent
+### What you need
+- A Hytale server that supports plugins
+- Java 17 or newer
 
-### Installer le plugin
+### Install the plugin
 
-**Option 1 : Installation rapide**
-1. Téléchargez le fichier `app.jar`
-2. Placez-le dans le dossier `mods/` de votre serveur
-3. Redémarrez le serveur
+**Option 1: Quick installation**
+1. Download the `app.jar` file
+2. Place it in your server's `mods/` folder
+3. Restart the server
 
-**Option 2 : Compiler vous-même**
+**Option 2: Compile it yourself**
 ```bash
 ./compile-copy.sh
 ```
-Le plugin sera automatiquement compilé et copié au bon endroit.
+The plugin will be automatically compiled and copied to the right place.
 
-## 📖 Comment utiliser
+## 📖 How to use
 
-Une fois le serveur démarré avec le plugin installé, tapez simplement les commandes en jeu :
+Once the server is started with the plugin installed, simply type the commands in-game :
 
 ```
 /hello
@@ -108,51 +128,55 @@ Une fois le serveur démarré avec le plugin installé, tapez simplement les com
 /sky clear
 /sky rain
 /sky storm
+/sky set Skylands_Sunny
+/sky current
+/sky id
+/sky id clear
 ```
 
-C'est tout ! Aucune permission spéciale requise.
+That's it! No special permissions required.
 
-## 🛠️ Pour les développeurs
+## 🛠️ For Developers
 
-Vous voulez modifier ou améliorer le plugin ? Voici les fichiers importants :
+Want to modify or improve the plugin? Here are the important files:
 
 ```
 app/src/main/java/com/hytable/plugin/
-├── BrocPlug.java              # Fichier principal qui charge les commandes et événements
-├── commands/                  # Dossier contenant toutes les commandes
-│   ├── HelloCommand.java      # Code de la commande /hello
-│   ├── StatusCommand.java     # Code de la commande /status
-│   ├── ClockCommand.java      # Code de la commande /clock avec sous-commandes (set, midday, midnight)
-│   └── SkyCommand.java        # Code de la commande /sky avec sous-commandes (clear, rain, storm)
-└── handlers/                  # Gestionnaires d'événements automatiques
-    └── WelcomeHandler.java    # Gère le message de bienvenue à la connexion
+├── BrocMod.java              # Main file that loads commands and events
+├── commands/                  # Folder containing all commands
+│   ├── HelloCommand.java      # Code for /hello command
+│   ├── StatusCommand.java     # Code for /status command
+│   ├── ClockCommand.java      # Code for /clock command with subcommands (set, midday, midnight)
+│   └── SkyCommand.java        # Code for /sky command with subcommands (clear, rain, storm, set, current, id)
+└── handlers/                  # Automatic event handlers
+    └── WelcomeHandler.java    # Handles welcome message on connection
 ```
 
-### Compiler le projet
+### Build the project
 
 ```bash
-# Compiler
+# Build the project
 ./gradlew build
 
-# Nettoyer et recompiler
+# Clean and rebuild
 ./gradlew clean build
 
-# Lancer les tests
+# Run tests
 ./gradlew test
 ```
 
 ## 🤝 Contribution
 
-N'hésitez pas à :
-- ✨ Proposer de nouvelles commandes
-- 🐛 Signaler des bugs
-- 📝 Améliorer la documentation
-- 🚀 Ajouter des fonctionnalités
+Feel free to :
+- ✨ Propose new commands
+- 🐛 Report bugs
+- 📝 Improve documentation
+- 🚀 Add features
 
-## 👤 Auteur
+## 👤 Author
 
-Développé par Alex
+Developed by Alex
 
 ---
 
-**Note** : Plugin en développement actif 🚧
+**Note** : Plugin in active development 🚧

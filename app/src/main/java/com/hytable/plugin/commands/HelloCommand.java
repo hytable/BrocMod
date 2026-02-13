@@ -27,12 +27,12 @@ public class HelloCommand extends AbstractPlayerCommand {
 			@Nonnull PlayerRef arg3, 
 			@Nonnull World arg4) 
 	{
-		//type /hello to execute
+		// Type /hello to execute
 
 		EventTitleUtil.showEventTitleToPlayer(
 			arg3,
-			Message.raw("Bienvenue à toi aventurier !"), 
-			Message.raw("Welcome"), 
+			Message.raw("Welcome adventurer!"), 
+			Message.raw("Have fun!"), 
 			true
 		);		
 	}

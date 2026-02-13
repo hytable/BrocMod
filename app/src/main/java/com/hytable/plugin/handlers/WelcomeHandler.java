@@ -9,16 +9,16 @@ import com.hypixel.hytale.server.core.util.EventTitleUtil;
 public class WelcomeHandler {
     public static void onPlayerJoin(PlayerConnectEvent event) {
         
-		//Récupérer la ref du joueur
+		// Get player reference
 		PlayerRef PlayerRef = event.getPlayerRef();
 
-		//Lire le nom
+		// Get player name
 		String PlayerName = PlayerRef.getUsername();
 
 		EventTitleUtil.showEventTitleToPlayer(
 			PlayerRef,
-			Message.raw("Bienvenue !!!"),
-			Message.raw("Salut " + PlayerName + " !!!"),
+			Message.raw("Welcome!!!"),
+			Message.raw("Hi " + PlayerName + "!!!"),
 			true);
     }
 }

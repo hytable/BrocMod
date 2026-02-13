@@ -17,7 +17,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 public class StatusCommand extends AbstractPlayerCommand{
 
-	public StatusCommand(@Nonnull String name,@Nonnull String description, boolean requiresConfirmation) {
+	public StatusCommand(@Nonnull String name, @Nonnull String description, boolean requiresConfirmation) {
 		super(name, description, requiresConfirmation);
 	}
 
@@ -29,49 +29,49 @@ public class StatusCommand extends AbstractPlayerCommand{
 			@Nonnull PlayerRef PlayerRef, 
 			@Nonnull World World) 
 	{
-		//Récuperer le nom du joueur
+		// Get player name
 		String playerName = PlayerRef.getUsername();
 
-		//Récupérer le nom du monde
+		// Get world name
 		String worldName = World.getName();
 
-		//Récupérer le store
+		// Get the store
 		Store<EntityStore> store = arg2.getStore();
 		
-//Récupérer les stats du joueur
-ComponentType<EntityStore, EntityStatMap> componentType = EntityStatMap.getComponentType();
+		// Get player stats
+		ComponentType<EntityStore, EntityStatMap> componentType = EntityStatMap.getComponentType();
 
-String statusMessage;
-if (componentType != null) {
+		String statusMessage;
+		if (componentType != null) {
     EntityStatMap statMap = (EntityStatMap) store.getComponent(arg2, componentType);
     
     if (statMap != null) {
-        // Récupérer les valeurs de vie et stamina  
+        // Get health and stamina values  
         EntityStatValue ESVPlayerHP = statMap.get(DefaultEntityStatTypes.getHealth());
         EntityStatValue ESVPlayerStamina = statMap.get(DefaultEntityStatTypes.getStamina());
         
-        if (ESVPlayerHP != null && ESVPlayerStamina != null) { //ESV = Entity Stat Value
+        if (ESVPlayerHP != null && ESVPlayerStamina != null) { // ESV = Entity Stat Value
             Float playerHP = ESVPlayerHP.get();
             Float playerStamina = ESVPlayerStamina.asPercentage() * 100;
 
-            //Créer le message
-            statusMessage = "Statut Joueur :" +
-                            "\n==========" +
-                            "\nPseudo: " + playerName + 
-                            "\nMonde: " + worldName +
+            // Create the message
+            statusMessage = "Player Status:" +
+                            "\n===========" +
+                            "\nUsername: " + playerName + 
+                            "\nWorld: " + worldName +
                             "\nHP: " + playerHP +
                             "\nStamina: " + playerStamina + "%";
         } else {
-            statusMessage = "Statistiques de santé/stamina indisponibles";
+            statusMessage = "Health/stamina statistics unavailable";
         }
     } else {
-        statusMessage = "Impossible de récupérer les stats";
+        statusMessage = "Unable to retrieve stats";
     }
 } else {
-    statusMessage = "Type de composant non disponible";
+    statusMessage = "Component type not available";
 }
 
-// Afficher le message
+// Send message
 ctx.sendMessage(Message.raw(statusMessage));			
 	}
 }

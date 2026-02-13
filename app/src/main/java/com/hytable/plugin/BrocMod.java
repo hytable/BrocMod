@@ -11,9 +11,9 @@ import com.hytable.plugin.commands.ClockCommand;
 import com.hytable.plugin.handlers.WelcomeHandler;
 import com.hytable.plugin.commands.SkyCommand;
 
-public class BrocPlug extends JavaPlugin {
+public class BrocMod extends JavaPlugin {
 
-	public BrocPlug(@Nonnull JavaPluginInit init) {
+	public BrocMod(@Nonnull JavaPluginInit init) {
 		super(init);
 	}
 
@@ -22,15 +22,15 @@ public class BrocPlug extends JavaPlugin {
 		super.setup();
 
 		this.getCommandRegistry().registerCommand(
-			new HelloCommand("hello","An exemple command", false));
+			new HelloCommand("hello", "An example command", false));
 
 		this.getCommandRegistry().registerCommand(
-			new StatusCommand("status", "Affiche le statut du joueur", false));
+			new StatusCommand("status", "Display player status", false));
 
 		this.getCommandRegistry().registerCommand(
 			new ClockCommand("clock", "Manage world time")); 
 		this.getCommandRegistry().registerCommand(
-			new SkyCommand("sky","Manage sky statut"));
+			new SkyCommand("sky", "Manage sky and weather"));
 
 		this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
 			WelcomeHandler.onPlayerJoin(event);

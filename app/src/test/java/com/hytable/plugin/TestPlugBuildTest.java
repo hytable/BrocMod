@@ -8,23 +8,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class BrocPlugBuildTest {
+class BrocModBuildTest {
 
     @Test
     @DisplayName("Plugin source files should exist")
     void testSourceFilesExist() {
-        Path BrocPlugPath = Paths.get("src/main/java/com/hytable/plugin/BrocPlug.java");
+        Path BrocModPath = Paths.get("src/main/java/com/hytable/plugin/BrocMod.java");
         Path helloCommandPath = Paths.get("src/main/java/com/hytable/plugin/commands/HelloCommand.java");
         Path manifestPath = Paths.get("src/main/resources/manifest.json");
 
-        assertTrue(Files.exists(BrocPlugPath), "BrocPlug.java doit exister");
+        assertTrue(Files.exists(BrocModPath), "BrocMod.java doit exister");
         assertTrue(Files.exists(helloCommandPath), "HelloCommand.java doit exister");
         assertTrue(Files.exists(manifestPath), "manifest.json doit exister");
     }
 
     @Test
     @DisplayName("Plugin should compile successfully")
-    void BrocPluginCompiles() {
+    void BrocModCompiles() {
         // Si ce test s'exécute, c'est que la compilation a réussi
         assertTrue(true, "La compilation a réussi");
     }

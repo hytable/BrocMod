@@ -19,11 +19,11 @@ public class ClockCommand extends AbstractWorldCommand {
 	public ClockCommand(@Nonnull String name, @Nonnull String description) {
 		super(name, description);
 
-		// Ajoute la sous-commande midday
+		// Add midday subcommand
 		this.addSubCommand(new MiddayCommand());
-		// Ajoute la sous-commande midnight
+		// Add midnight subcommand
 		this.addSubCommand(new MidnightCommand());
-		// Ajoute la sous-commande set
+		// Add set subcommand
 		this.addSubCommand(new SetClockCommand());
 	}
 
@@ -32,29 +32,29 @@ public class ClockCommand extends AbstractWorldCommand {
 			@Nonnull CommandContext ctx,
 			@Nonnull World world,
 			@Nonnull Store<EntityStore> store) {
-		// Récupérer la ressource de temps
+		// Get the time resource
 		WorldTimeResource worldTimeResource = store.getResource(WorldTimeResource.getResourceType());
 
-		// Récupérer l'heure exact avec date etc
+		// Get the exact time with date etc
 		LocalDateTime localDateTime = worldTimeResource.getGameDateTime();
 
-		// Récupérer les heures
+		// Get hours
 		int localHour = localDateTime.getHour();
 
-		// Récupérer les minutes
+		// Get minutes
 		int localMinute = localDateTime.getMinute();
 
-		// Transformer l'heure en string
+		// Convert time to string
 		String timeString = String.format("%dh%02d", localHour, localMinute);
 
-		// Envoyer l'heure au joueur
-		ctx.sendMessage(Message.raw("Il est " + timeString));
+		// Send time to player
+		ctx.sendMessage(Message.raw("It is " + timeString));
 	}
 
 	private static class MiddayCommand extends AbstractWorldCommand {
 
 		public MiddayCommand() {
-			super("midday", "Change hour to midday");
+			super("midday", "Change time to midday");
 		}
 
 		@Override
@@ -62,14 +62,14 @@ public class ClockCommand extends AbstractWorldCommand {
 				@Nonnull CommandContext ctx,
 				@Nonnull World world,
 				@Nonnull Store<EntityStore> store) {
-			// Récupérer la ressource de temps
+			// Get the time resource
 			WorldTimeResource worldTimeResource = store.getResource(WorldTimeResource.getResourceType());
 
-			// Changer l'heure à midi
+			// Change time to noon
 			worldTimeResource.setDayTime(0.5, world, store);
 
-			// informer le joueur de la nouvelle heure
-			ctx.sendMessage(Message.raw("Il est midi"));
+			// Inform the player of the new time
+			ctx.sendMessage(Message.raw("It is now noon"));
 
 		}
 	}
@@ -77,7 +77,7 @@ public class ClockCommand extends AbstractWorldCommand {
 	private static class MidnightCommand extends AbstractWorldCommand {
 
 		public MidnightCommand() {
-			super("midnight", "Change hour to midnight");
+			super("midnight", "Change time to midnight");
 		}
 
 		@Override
@@ -85,14 +85,14 @@ public class ClockCommand extends AbstractWorldCommand {
 				@Nonnull CommandContext ctx,
 				@Nonnull World world,
 				@Nonnull Store<EntityStore> store) {
-			// Récupérer la ressource de temps
+			// Get the time resource
 			WorldTimeResource worldTimeResource = store.getResource(WorldTimeResource.getResourceType());
 
-			// Changer l'heure à minuit
+			// Change time to midnight
 			worldTimeResource.setDayTime(0, world, store);
 
-			// informer le joueur de la nouvelle heure
-			ctx.sendMessage(Message.raw("Il est minuit"));
+			// Inform the player of the new time
+			ctx.sendMessage(Message.raw("It is now midnight"));
 
 		}
 	}
@@ -111,14 +111,14 @@ public class ClockCommand extends AbstractWorldCommand {
 				@Nonnull World world,
 				@Nonnull Store<EntityStore> store) {
 
-			// Récupérer l'argument
+			// Get the argument
 			String timeInput = this.timeArg.get(ctx);
 			
-			//Découper en heure et minute avec split
+			// Split into hours and minutes
 			String[] parts = timeInput.split(":");
 			
 			if (parts.length != 2) {
-				ctx.sendMessage(Message.raw("ERROR --> HH:MM"));
+				ctx.sendMessage(Message.raw("ERROR --> Format: HH:MM"));
 				return;
 			}
 
@@ -126,12 +126,12 @@ public class ClockCommand extends AbstractWorldCommand {
 			int minutes = Integer.parseInt(parts[1]);
 			
 			if (hours < 0 || hours > 23){
-				ctx.sendMessage(Message.raw("ERROR --> Between 0 and 23"));
+				ctx.sendMessage(Message.raw("ERROR --> Hours must be between 0 and 23"));
 				return;
 			}
 
 			if (minutes < 0 || minutes > 59){
-				ctx.sendMessage(Message.raw("ERROR --> Between 0 and 59"));
+				ctx.sendMessage(Message.raw("ERROR --> Minutes must be between 0 and 59"));
 				return;
 			}
 
@@ -141,7 +141,7 @@ public class ClockCommand extends AbstractWorldCommand {
 			
 			worldTimeResource.setDayTime(setDayTime, world, store);
 
-			ctx.sendMessage(Message.raw("L'heure a été changée à " + String.format("%dh%02d", hours, minutes )));
+			ctx.sendMessage(Message.raw("Time changed to " + String.format("%dh%02d", hours, minutes)));
 		}
 	}
 }
