@@ -10,6 +10,7 @@ import com.hytable.plugin.commands.StatusCommand;
 import com.hytable.plugin.commands.ClockCommand;
 import com.hytable.plugin.handlers.WelcomeHandler;
 import com.hytable.plugin.commands.SkyCommand;
+import com.hytable.plugin.commands.FlyCommand;
 
 public class BrocMod extends JavaPlugin {
 
@@ -31,6 +32,8 @@ public class BrocMod extends JavaPlugin {
 			new ClockCommand("clock", "Manage world time")); 
 		this.getCommandRegistry().registerCommand(
 			new SkyCommand("sky", "Manage sky and weather"));
+		this.getCommandRegistry().registerCommand(
+			new FlyCommand("fly", "Allow the player to set fly on/off", false));
 
 		this.getEventRegistry().register(PlayerConnectEvent.class, event -> {
 			WelcomeHandler.onPlayerJoin(event);
