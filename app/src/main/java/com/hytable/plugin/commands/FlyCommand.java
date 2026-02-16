@@ -26,12 +26,12 @@ public class FlyCommand extends AbstractPlayerCommand {
 	protected void execute(
 			@Nonnull CommandContext ctx,
 			@Nonnull Store<EntityStore> store,
-			@Nonnull Ref<EntityStore> arg2,
+			@Nonnull Ref<EntityStore> ref,
 			@Nonnull PlayerRef playerRef,
 			@Nonnull World world) {
 		// Get the Hytale component that stores the player's movement state
 		MovementStatesComponent movementStatesComponent = store.getComponent(
-				arg2,
+				ref,
 				MovementStatesComponent.getComponentType()
 		);
 
@@ -42,9 +42,9 @@ public class FlyCommand extends AbstractPlayerCommand {
 		boolean newFlying = !isFlying;
 
 		// Get the Player component to apply the new state server/client side
-		Player player = store.getComponent(arg2, Player.getComponentType());
+		Player player = store.getComponent(ref, Player.getComponentType());
 		// Reset fly speed to default if turbo was enabled
-		MovementManager movementManager = store.getComponent(arg2, MovementManager.getComponentType());
+		MovementManager movementManager = store.getComponent(ref, MovementManager.getComponentType());
 		if (movementManager != null && movementManager.getSettings() != null && movementManager.getDefaultSettings() != null) {
 			MovementSettings settings = movementManager.getSettings();
 			MovementSettings defaults = movementManager.getDefaultSettings();
@@ -55,7 +55,7 @@ public class FlyCommand extends AbstractPlayerCommand {
 
 		// Apply the new flying state to the player
 		player.applyMovementStates(
-				arg2,
+				ref,
 				new SavedMovementStates(newFlying),
 				movementStatesComponent.getMovementStates(),
 				store
@@ -78,11 +78,11 @@ public class FlyCommand extends AbstractPlayerCommand {
 		protected void execute(
 				@Nonnull CommandContext ctx,
 				@Nonnull Store<EntityStore> store,
-				@Nonnull Ref<EntityStore> arg2,
+				@Nonnull Ref<EntityStore> ref,
 				@Nonnull PlayerRef playerRef,
 				@Nonnull World world) {
 			// Get movement manager to read and update movement settings
-			MovementManager movementManager = store.getComponent(arg2, MovementManager.getComponentType());
+			MovementManager movementManager = store.getComponent(ref, MovementManager.getComponentType());
 			if (movementManager == null) {
 				ctx.sendMessage(Message.raw("Movement manager not available"));
 				return;
@@ -115,3 +115,4 @@ public class FlyCommand extends AbstractPlayerCommand {
 		}
 	}
 }
+

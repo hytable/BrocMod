@@ -37,6 +37,10 @@ When a player joins the server, a **custom title** appears on the screen with th
 | `/sky current` | Display the current weather ID |
 | `/sky id` | List weather categories |
 | `/sky id <category>` | List weather IDs in a category |
+| `/fly` | Toggle fly on/off |
+| `/fly turbo` | Toggle fly turbo (3x speed) |
+| `/clearchat` | Clear chat (push blank lines) |
+| `/god` | Toggle godmode (cancel incoming damage) |
 
 ### 💬 `/hello`
 Displays a stylish welcome message directly on your screen. Perfect for testing the plugin!
@@ -95,6 +99,19 @@ Weather management :
 
 *Example: List of all sunny weather IDs in the "clear" category*
 
+### 🕊️ `/fly`
+Toggle player flying.
+- **`/fly`** → Enable/disable flying
+- **`/fly turbo`** → Toggle a faster fly speed (3x)
+
+### 🛡️ `/god`
+Toggle godmode (invulnerability).
+
+When enabled, incoming [`Damage`](hytale-source/com/hypixel/hytale/server/core/modules/entity/damage/Damage.java:28) events are cancelled for the player.
+
+### 🧹 `/clearchat`
+Clears chat by sending blank lines.
+
 ## 🚀 Installation
 
 ### What you need
@@ -132,6 +149,10 @@ Once the server is started with the plugin installed, simply type the commands i
 /sky current
 /sky id
 /sky id clear
+/fly
+/fly turbo
+/clearchat
+/god
 ```
 
 That's it! No special permissions required.
@@ -147,9 +168,13 @@ app/src/main/java/com/hytable/plugin/
 │   ├── HelloCommand.java      # Code for /hello command
 │   ├── StatusCommand.java     # Code for /status command
 │   ├── ClockCommand.java      # Code for /clock command with subcommands (set, midday, midnight)
+│   ├── FlyCommand.java        # Code for /fly command (and /fly turbo)
+│   ├── ClearChatCommand.java  # Code for /clearchat command
+│   ├── GodCommand.java        # Code for /god command (toggle)
 │   └── SkyCommand.java        # Code for /sky command with subcommands (clear, rain, storm, set, current, id)
 └── handlers/                  # Automatic event handlers
-    └── WelcomeHandler.java    # Handles welcome message on connection
+    ├── WelcomeHandler.java    # Handles welcome message on connection
+    └── GodDamageHandler.java  # Cancels damage when /god is enabled
 ```
 
 ### Build the project

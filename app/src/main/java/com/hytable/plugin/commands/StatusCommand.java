@@ -25,7 +25,7 @@ public class StatusCommand extends AbstractPlayerCommand{
 	protected void execute(
 			@Nonnull CommandContext ctx,
 			@Nonnull Store<EntityStore> arg1,
-			@Nonnull Ref<EntityStore> arg2, 
+			@Nonnull Ref<EntityStore> ref, 
 			@Nonnull PlayerRef PlayerRef, 
 			@Nonnull World World) 
 	{
@@ -36,14 +36,14 @@ public class StatusCommand extends AbstractPlayerCommand{
 		String worldName = World.getName();
 
 		// Get the store
-		Store<EntityStore> store = arg2.getStore();
+		Store<EntityStore> store = ref.getStore();
 		
 		// Get player stats
 		ComponentType<EntityStore, EntityStatMap> componentType = EntityStatMap.getComponentType();
 
 		String statusMessage;
 		if (componentType != null) {
-    EntityStatMap statMap = (EntityStatMap) store.getComponent(arg2, componentType);
+	EntityStatMap statMap = (EntityStatMap) store.getComponent(ref, componentType);
     
     if (statMap != null) {
         // Get health and stamina values  
