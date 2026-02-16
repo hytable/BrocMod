@@ -107,7 +107,7 @@ Toggle player flying.
 ### 🛡️ `/god`
 Toggle godmode (invulnerability).
 
-When enabled, incoming [`Damage`](hytale-source/com/hypixel/hytale/server/core/modules/entity/damage/Damage.java:28) events are cancelled for the player.
+When enabled, incoming Damage events are cancelled for the player.
 
 ### 🧹 `/clearchat`
 Clears chat by sending blank lines.
